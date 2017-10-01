@@ -15,8 +15,10 @@ development:
   database: SQLInjectionDemo_development
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost
+  flags:
+    - MULTI_STATEMENTS
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,7 +30,7 @@ test:
   database: SQLInjectionDemo_test
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost
 
 production:
@@ -38,5 +40,5 @@ production:
   database: SQLInjectionDemo_production
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost

@@ -1,0 +1,12 @@
+- if @current_user
+  %li
+    %a(href = 'javascript:void(0)')
+      = "Welcome #{@current_user.name}"
+  %li
+    = link_to 'Reset Data', reset_data_path
+  %li= link_to 'Logout', logout_path
+- else
+  %li
+    = link_to 'Login', show_login_path
+  %li
+    = link_to 'Safe Login', show_safe_login_path

@@ -1,0 +1,15 @@
+.row
+  .col-sm-6.col-md-5.col-lg-4.col-centered
+    %center
+      %h2 Login to Your Account
+    %br/
+
+    = form_tag(login_path) do
+      .form-group
+        = text_field_tag(:email, '', placeholder: 'Input your email address', class: 'form-control', autofocus: true)
+      .form-group
+        = text_field_tag(:password, '', placeholder: 'Input your password', class: 'form-control')
+
+      .form-group
+        %center
+          = submit_tag('Login', class: 'btn btn-primary')

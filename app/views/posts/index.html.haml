@@ -1,0 +1,37 @@
+.row
+  .col-sm-6.col-md-3
+    .form-group
+      %label{:for => "sel1"} Filter by author
+      %select#sel1.form-control{onchange: 'location.href="/posts?user_id=" + this.value'}
+        %option{value: 'all'} All
+        - @users.each do |user|
+          - if user.id == params[:user_id].to_i
+
+            %option{value: user.id, selected: 'selected'}= user.name
+          - else
+            %option{value: user.id}= user.name
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Title
+      %th Description
+      %th Posted At
+      %th Author
+      - if @current_user
+        %th Actions
+
+  %tbody
+    - i = 0
+    - @posts.each do |post|
+      - i += 1
+      %tr
+        %th{scope: "row"}= i
+        %td= link_to post.title, post_path(post)
+        %td= post.description
+        %td= post.created_at&.strftime("%B %d, %Y")
+        %td= post.user&.name
+        - if @current_user
+          %td
+            = link_to 'Delete', post_path(post), method: :delete
